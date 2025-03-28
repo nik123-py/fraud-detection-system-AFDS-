@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Detection - FraudHawk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="features.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>FraudHawk</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#statistics">Statistics</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="dashboard.html" class="btn btn-primary">
+                    Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="featureMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="featureMobileMenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#statistics">Statistics</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="dashboard.html" class="btn btn-primary mobile-btn">Dashboard</a>
+    </div>
+
+    <!-- Feature Hero -->
+    <section class="feature-hero">
+        <div class="container">
+            <div class="feature-hero-content">
+                <div class="feature-icon large">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h1>Instant Detection</h1>
+                <p>Our AI-powered instant detection system identifies fraudulent activities within milliseconds, allowing for immediate action before any damage occurs.</p>
+                <a href="dashboard.html" class="btn btn-gradient">Try It Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details -->
+    <section class="feature-details">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-info">
+                    <h2>How It Works</h2>
+                    <p>Our instant detection system uses advanced machine learning algorithms to analyze transaction patterns in real-time. By processing thousands of data points per second, it can identify suspicious activities almost instantly.</p>
+                    
+                    <h3>Key Benefits</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Millisecond response time for immediate action</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Continuous learning from new fraud patterns</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Reduced false positives through AI refinement</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Seamless integration with your existing systems</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Detection Speed Comparison</h3>
+                        </div>
+                        <div class="card-content">
+                            <canvas id="detectionSpeedChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Metrics -->
+    <section class="feature-metrics">
+        <div class="container">
+            <h2>Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">99.8%</div>
+                    <div class="metric-label">Detection Accuracy</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;50ms</div>
+                    <div class="metric-label">Average Response Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Continuous Monitoring</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95%</div>
+                    <div class="metric-label">Fraud Prevention Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Implement Instant Detection?</h2>
+                <p>Protect your business with our cutting-edge AI technology.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="dashboard.html" class="btn btn-gradient">
+                    Access Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="index.html#contact" class="btn btn-outline">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FraudHawk</span>
+                </div>
+                <p class="copyright">
+                    &copy; <span id="featureCurrentYear"></span> FraudHawk. All rights reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="features.js"></script>
+    <script>
+         const detectionSpeedChartEl = document.getElementById("detectionSpeedChart")
+  if (detectionSpeedChartEl) {
+    const speedData = [
+      { name: "Traditional", value: 2500 },
+      { name: "Rule-Based", value: 1200 },
+      { name: "ML-Based", value: 500 },
+      { name: "FraudHawk", value: 50 },
+    ]
+
+    const chart = new Chart(detectionSpeedChartEl, {
+      type: "bar",
+      data: {
+        labels: speedData.map((row) => row.name),
+        datasets: [
+          {
+            label: "Detection Time (ms)",
+            data: speedData.map((row) => row.value),
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.7)",
+              "rgba(255, 159, 64, 0.7)",
+              "rgba(255, 205, 86, 0.7)",
+              "rgba(138, 43, 226, 0.7)",
+            ],
+            borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(138, 43, 226)"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#f8f9fa",
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (context) => `${context.raw} ms`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+          y: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+      },
+    })
+
+    window.featureChartInstances.push(chart)
+}
+    </script>
+</body>
+</html>
+

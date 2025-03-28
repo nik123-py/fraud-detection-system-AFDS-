@@ -1,0 +1,18 @@
+2025-03-21 01:29:21,597 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-03-21 01:29:21,598 - [33mPress CTRL+C to quit[0m
+2025-03-21 01:29:21,602 -  * Restarting with stat
+2025-03-21 01:29:23,956 -  * Debugger is active!
+2025-03-21 01:29:23,958 -  * Debugger PIN: 829-890-839
+2025-03-21 01:30:57,234 -  * Detected change in 'C:\\Users\\Divy Krsna Das\\Downloads\\fraud-detection\\app.py', reloading
+2025-03-21 01:30:57,568 -  * Restarting with stat
+2025-03-21 01:30:59,781 -  * Debugger is active!
+2025-03-21 01:30:59,784 -  * Debugger PIN: 829-890-839
+2025-03-21 01:31:21,730 - 127.0.0.1 - - [21/Mar/2025 01:31:21] "[33mGET / HTTP/1.1[0m" 404 -
+2025-03-21 01:31:21,835 - 127.0.0.1 - - [21/Mar/2025 01:31:21] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-21 03:55:03,972 - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5003
+2025-03-21 03:55:03,972 - [33mPress CTRL+C to quit[0m
+2025-03-21 03:55:03,974 -  * Restarting with stat
+2025-03-21 03:55:08,533 -  * Debugger is active!
+2025-03-21 03:55:08,537 -  * Debugger PIN: 498-934-289
