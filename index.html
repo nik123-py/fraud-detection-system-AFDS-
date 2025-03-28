@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FraudHawk - AI-Powered Fraud Detection System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>FraudHawk</span>
+            </div>
+            <nav class="nav">
+                <a href="#features">Features</a>
+                <a href="#statistics">Statistics</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="dashboard.html" class="btn btn-primary">
+                    Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features">Features</a>
+        <a href="#statistics">Statistics</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="dashboard.html" class="btn btn-primary mobile-btn">Dashboard</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="gradient-text">AI-Powered Fraud Detection System That Fights Back</h1>
+                <p>Protect your business with our advanced AI system that detects and prevents fraud in real-time, before it happens.</p>
+                <div class="hero-actions">
+                    <a href="dashboard.html" class="btn btn-gradient">
+                        Get Started
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#features" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-chart">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Fraud Attempts Blocked Today</h3>
+                        <p>Real-time protection in action</p>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="realTimeChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Features</div>
+                <h2>Advanced Protection Features</h2>
+                <p>Our system uses cutting-edge AI technology to protect your business from fraud.</p>
+            </div>
+            <div class="features-grid">
+    <a href="instant-detection.html" class="feature-button">
+        <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+        </div>
+        <h3>Instant Detection</h3>
+        <p>Detect fraudulent activities within milliseconds of occurrence.</p>
+        <span class="btn-text">Learn More</span>
+    </a>
+    <a href="ai-powered-honeypots.html" class="feature-button">
+        <div class="feature-icon">
+            <i class="fas fa-database"></i>
+        </div>
+        <h3>AI-Powered Honeypots</h3>
+        <p>Trap and analyze fraudulent behavior to improve detection.</p>
+        <span class="btn-text">Learn More</span>
+    </a>
+    <a href="real-time-alerts.html" class="feature-button">
+        <div class="feature-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <h3>Real-Time Alerts</h3>
+        <p>Get notified instantly when suspicious activity is detected.</p>
+        <span class="btn-text">Learn More</span>
+    </a>
+    <a href="dynamic-visualization.html" class="feature-button">
+        <div class="feature-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        <h3>Dynamic Visualization</h3>
+        <p>See fraud patterns and trends with interactive dashboards.</p>
+        <span class="btn-text">Learn More</span>
+    </a>
+</div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="statistics">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge">Statistics</div>
+                <h2>Fraud Prevention Metrics</h2>
+                <p>See how our system is protecting businesses worldwide.</p>
+            </div>
+            <div class="statistics-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Daily Fraud Attempts</h3>
+                        <p>Number of fraud attempts detected and blocked daily</p>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="fraudAttemptsChart" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Detection vs Prevention</h3>
+                        <p>Comparison of detected and prevented fraud attempts</p>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="detectionChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Secure Your Business?</h2>
+                <p>Get started with our AI-powered fraud detection system today.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="dashboard.html" class="btn btn-gradient">
+                    Access Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FraudHawk</span>
+                </div>
+                <p class="copyright">
+                    &copy; <span id="currentYear"></span> FraudHawk. All rights reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script src="dashboard.js"></script>
+    <script>
+        
+        
+        const realTimeChartEl = document.getElementById("realTimeChart")
+  if (realTimeChartEl) {
+    const realTimeData = [
+      { time: "00:00", value: 20 },
+      { time: "04:00", value: 40 },
+      { time: "08:00", value: 60 },
+      { time: "12:00", value: 180 },
+      { time: "16:00", value: 100 },
+      { time: "20:00", value: 80 },
+      { time: "24:00", value: 30 },
+    ]
+
+    const chart = new Chart(realTimeChartEl, {
+      type: "line",
+      data: {
+        labels: realTimeData.map((row) => row.time),
+        datasets: [
+          {
+            label: "Fraud Attempts Blocked",
+            data: realTimeData.map((row) => row.value),
+            fill: true,
+            backgroundColor: "rgba(138, 43, 226, 0.2)",
+            borderColor: "rgba(138, 43, 226, 1)",
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#f8f9fa",
+            },
+          },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+          x: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+      },
+    })
+
+    window.chartInstances.push(chart)
+  }
+
+    </script>
+
+    <script>
+         const fraudAttemptsChartEl = document.getElementById("fraudAttemptsChart")
+  if (fraudAttemptsChartEl) {
+    const fraudData = [
+      { name: "Jan", value: 4000 },
+      { name: "Feb", value: 3000 },
+      { name: "Mar", value: 5000 },
+      { name: "Apr", value: 2780 },
+      { name: "May", value: 1890 },
+      { name: "Jun", value: 2390 },
+      { name: "Jul", value: 3490 },
+    ]
+
+    const chart = new Chart(fraudAttemptsChartEl, {
+      type: "bar",
+      data: {
+        labels: fraudData.map((row) => row.name),
+        datasets: [
+          {
+            label: "Fraud Attempts",
+            data: fraudData.map((row) => row.value),
+            backgroundColor: "rgba(138, 43, 226, 0.7)",
+            borderColor: "rgba(138, 43, 226, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+          x: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+      },
+    })
+
+    window.chartInstances.push(chart)
+  }
+    </script>
+
+    <script>
+         const detectionChartEl = document.getElementById("detectionChart")
+  if (detectionChartEl) {
+    const detectionData = [
+      { name: "Mon", detected: 120, prevented: 80 },
+      { name: "Tue", detected: 140, prevented: 100 },
+      { name: "Wed", detected: 170, prevented: 130 },
+      { name: "Thu", detected: 90, prevented: 70 },
+      { name: "Fri", detected: 180, prevented: 150 },
+      { name: "Sat", detected: 60, prevented: 40 },
+      { name: "Sun", detected: 80, prevented: 60 },
+    ]
+
+    const chart = new Chart(detectionChartEl, {
+      type: "line",
+      data: {
+        labels: detectionData.map((row) => row.name),
+        datasets: [
+          {
+            label: "Detected",
+            data: detectionData.map((row) => row.detected),
+            borderColor: "rgba(138, 43, 226, 1)",
+            backgroundColor: "rgba(138, 43, 226, 0.1)",
+            tension: 0.4,
+          },
+          {
+            label: "Prevented",
+            data: detectionData.map((row) => row.prevented),
+            borderColor: "rgba(130, 202, 157, 1)",
+            backgroundColor: "rgba(130, 202, 157, 0.1)",
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+          x: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+      },
+    })
+
+    window.chartInstances.push(chart)
+  }
+    </script>
+
+</body>
+</html>
+

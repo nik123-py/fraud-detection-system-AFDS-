@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Honeypots - FraudHawk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="features.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>FraudHawk</span>
+            </div>
+            <nav class="nav">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#statistics">Statistics</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <a href="dashboard.html" class="btn btn-primary">
+                    Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="featureMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="featureMobileMenu">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#statistics">Statistics</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="dashboard.html" class="btn btn-primary mobile-btn">Dashboard</a>
+    </div>
+
+    <!-- Feature Hero -->
+    <section class="feature-hero">
+        <div class="container">
+            <div class="feature-hero-content">
+                <div class="feature-icon large">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h1>AI-Powered Honeypots</h1>
+                <p>Our advanced honeypot technology uses AI to create sophisticated traps that lure fraudsters, analyze their behavior, and strengthen your security defenses.</p>
+                <a href="https://github.com/nik123-py/ai-powered-honeypot" class="btn btn-gradient">Try It Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details -->
+    <section class="feature-details">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-info">
+                    <h2>How It Works</h2>
+                    <p>Our AI-powered honeypots create decoy systems that appear legitimate to attackers but are isolated from your actual business operations. These systems monitor and record fraudulent activities, providing valuable intelligence on attack patterns and techniques.</p>
+                    
+                    <h3>Key Benefits</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Early detection of new fraud techniques</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Continuous learning and adaptation to emerging threats</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Detailed intelligence on attacker behavior and methods</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span>Zero impact on legitimate user experience</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Honeypot Effectiveness</h3>
+                        </div>
+                        <div class="card-content">
+                            <canvas id="honeypotChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Metrics -->
+    <section class="feature-metrics">
+        <div class="container">
+            <h2>Performance Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">87%</div>
+                    <div class="metric-label">Attacker Engagement Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">35+</div>
+                    <div class="metric-label">Fraud Patterns Identified</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">24/7</div>
+                    <div class="metric-label">Active Monitoring</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">68%</div>
+                    <div class="metric-label">Reduction in Successful Attacks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Deploy AI-Powered Honeypots?</h2>
+                <p>Strengthen your security with our advanced fraud detection technology.</p>
+            </div>
+            <div class="cta-actions">
+                <a href="dashboard.html" class="btn btn-gradient">
+                    Access Dashboard
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="index.html#contact" class="btn btn-outline">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FraudHawk</span>
+                </div>
+                <p class="copyright">
+                    &copy; <span id="featureCurrentYear"></span> FraudHawk. All rights reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="features.js"></script>
+    <script>
+         const honeypotChartEl = document.getElementById("honeypotChart")
+  if (honeypotChartEl) {
+    const honeypotData = [
+      { month: "Jan", traditional: 30, ai: 65 },
+      { month: "Feb", traditional: 35, ai: 70 },
+      { month: "Mar", traditional: 40, ai: 75 },
+      { month: "Apr", traditional: 45, ai: 80 },
+      { month: "May", traditional: 50, ai: 85 },
+      { month: "Jun", traditional: 55, ai: 90 },
+    ]
+
+    const chart = new Chart(honeypotChartEl, {
+      type: "line",
+      data: {
+        labels: honeypotData.map((row) => row.month),
+        datasets: [
+          {
+            label: "Traditional Honeypots",
+            data: honeypotData.map((row) => row.traditional),
+            borderColor: "rgba(255, 159, 64, 1)",
+            backgroundColor: "rgba(255, 159, 64, 0.1)",
+            tension: 0.4,
+          },
+          {
+            label: "AI-Powered Honeypots",
+            data: honeypotData.map((row) => row.ai),
+            borderColor: "rgba(138, 43, 226, 1)",
+            backgroundColor: "rgba(138, 43, 226, 0.1)",
+            tension: 0.4,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#f8f9fa",
+            },
+          },
+          tooltip: {
+            callbacks: {
+              label: (context) => `${context.dataset.label}: ${context.raw}% effectiveness`,
+            },
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+              callback: (value) => value + "%",
+            },
+          },
+          x: {
+            grid: {
+              color: "rgba(255, 255, 255, 0.1)",
+            },
+            ticks: {
+              color: "#f8f9fa",
+            },
+          },
+        },
+      },
+    })
+    window.featureChartInstances.push(chart)
+  }
+    </script>
+</body>
+</html>
+

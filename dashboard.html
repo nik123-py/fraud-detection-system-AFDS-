@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FraudHawk</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header class="header dashboard-header">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>FraudHawk</span>
+                </div>
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="search" placeholder="Search..." class="search-input">
+                </div>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <div class="dropdown">
+                    <button class="dropdown-btn">
+                        Admin
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-label">My Account</div>
+                        <div class="dropdown-divider"></div>
+                        <a href="#">Profile</a>
+                        <a href="#">Settings</a>
+                        <a href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="dashboardMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="dashboardMobileMenu">
+        <a href="#overview">Overview</a>
+        <a href="transaction.html">Transactions</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#users">Users</a>
+        <a href="#settings">Settings</a>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <button class="sidebar-btn active" data-tab="overview">
+                    <i class="fas fa-home"></i>
+                    Overview
+                </button>
+                <a href="transaction.html"><button class="sidebar-btn" data-tab="transactions">
+                    <i class="fas fa-credit-card"></i>
+                    Transactions
+                </button></a>
+                <button class="sidebar-btn" data-tab="alerts">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Alerts
+                </button>
+                <button class="sidebar-btn" data-tab="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    Analytics
+                </button>
+                <button class="sidebar-btn" data-tab="users">
+                    <i class="fas fa-users"></i>
+                    Users
+                </button>
+                <button class="sidebar-btn" data-tab="settings">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h1>Dashboard</h1>
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-calendar"></i>
+                        Last 7 days
+                    </button>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-download"></i>
+                        Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>Total Transactions</h3>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="totalTransactions">0</div>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>Suspicious Attempts</h3>
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="fraudAttempts">0</div>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>Money Saved</h3>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="moneySaved">$0.00</div>
+                    </div>
+                </div>
+                <div class="card stat-card">
+                    <div class="stat-header">
+                        <h3>Active Users</h3>
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-value" id="activeUsers">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-grid">
+                <div class="card chart-card wide">
+                    <div class="card-header">
+                        <h3>Transaction Overview</h3>
+                        <p>Normal vs. Suspicious Transactions Over Time</p>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="transactionOverviewChart" height="300"></canvas>
+                    </div>
+                </div>
+            
+                <div class="card chart-card">
+                    <div class="card-header">
+                        <h3>Fraud by Location</h3>
+                        <p>Geographic distribution of fraud attempts</p>
+                    </div>
+                    <div class="card-content">
+                        <canvas id="locationChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Alerts -->
+            <div class="alerts-section">
+                <div class="section-header-row">
+                    <h2>Recent Alerts</h2>
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-filter"></i>
+                        Filter
+                    </button>
+                </div>
+                <div class="alerts-list">
+                    <div class="alert-card high">
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Unusual Location</h3>
+                            </div>
+                            <div class="alert-meta">
+                                <span class="alert-time">2 minutes ago</span>
+                                <span class="alert-status blocked">Blocked</span>
+                            </div>
+                        </div>
+                        <p class="alert-description">Transaction attempted from a new location</p>
+                    </div>
+                    <div class="alert-card medium">
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Multiple Attempts</h3>
+                            </div>
+                            <div class="alert-meta">
+                                <span class="alert-time">15 minutes ago</span>
+                                <span class="alert-status flagged">Flagged</span>
+                            </div>
+                        </div>
+                        <p class="alert-description">Multiple failed authentication attempts</p>
+                    </div>
+                    <div class="alert-card high">
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Large Transaction</h3>
+                            </div>
+                            <div class="alert-meta">
+                                <span class="alert-time">1 hour ago</span>
+                                <span class="alert-status blocked">Blocked</span>
+                            </div>
+                        </div>
+                        <p class="alert-description">Unusually large transaction amount</p>
+                    </div>
+                    <div class="alert-card medium">
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Velocity Check</h3>
+                            </div>
+                            <div class="alert-meta">
+                                <span class="alert-time">3 hours ago</span>
+                                <span class="alert-status flagged">Flagged</span>
+                            </div>
+                        </div>
+                        <p class="alert-description">Multiple transactions in short time period</p>
+                    </div>
+                    <div class="alert-card high">
+                        <div class="alert-header">
+                            <div class="alert-title">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Pattern Match</h3>
+                            </div>
+                            <div class="alert-meta">
+                                <span class="alert-time">5 hours ago</span>
+                                <span class="alert-status blocked">Blocked</span>
+                            </div>
+                        </div>
+                        <p class="alert-description">Transaction matches known fraud pattern</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="transactions-section">
+                <div class="section-header-row">
+                    <h2>Recent Transactions</h2>
+                    <button class="btn btn-outline btn-sm">View All</button>
+                </div>
+                <div class="transactions-table">
+                    <div class="table-header">
+                        <div class="table-cell">Transaction ID</div>
+                        <div class="table-cell">User</div>
+                        <div class="table-cell">Amount</div>
+                        <div class="table-cell">Date</div>
+                        <div class="table-cell">Status</div>
+                        <div class="table-cell">Risk Level</div>
+                    </div>
+                    <div id="transactions-table-body"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer dashboard-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">
+                    &copy; <span id="dashboardCurrentYear"></span> FraudHawk. All rights reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Help Center</a>
+                    <a href="#">Documentation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+        fetch('http://127.0.0.1:5000/fetch_transactions')
+        .then(response => response.json())
+        .then(data => {
+            const transactionsTableBody = document.getElementById('transactions-table-body');
+            data.forEach((transaction, index) => {
+                const tableRow = document.createElement('div');
+                tableRow.classList.add('table-row');
+
+                const transactionIdCell = document.createElement('div');
+                transactionIdCell.classList.add('table-cell');
+                transactionIdCell.textContent = `${transaction.username}_${index + 1}`;
+
+                const userCell = document.createElement('div');
+                userCell.classList.add('table-cell');
+                userCell.textContent = transaction.username;
+
+                const amountCell = document.createElement('div');
+                amountCell.classList.add('table-cell');
+                amountCell.textContent = `$${transaction.amount}`;
+
+                const dateCell = document.createElement('div');
+                dateCell.classList.add('table-cell');
+                dateCell.textContent = transaction.date;
+
+                const statusCell = document.createElement('div');
+                statusCell.classList.add('table-cell');
+                const statusBadge = document.createElement('span');
+                statusBadge.classList.add('status-badge');
+                statusBadge.textContent = transaction.status;
+                statusCell.appendChild(statusBadge);
+
+                const riskLevelCell = document.createElement('div');
+                riskLevelCell.classList.add('table-cell');
+                const riskBadge = document.createElement('span');
+                riskBadge.classList.add('risk-badge');
+                riskBadge.textContent = transaction.risklevel;
+                riskLevelCell.appendChild(riskBadge);
+
+                tableRow.appendChild(transactionIdCell);
+                tableRow.appendChild(userCell);
+                tableRow.appendChild(amountCell);
+                tableRow.appendChild(dateCell);
+                tableRow.appendChild(statusCell);
+                tableRow.appendChild(riskLevelCell);
+
+                transactionsTableBody.appendChild(tableRow);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+        fetch('http://127.0.0.1:5000/fetch_transactions')
+        .then(response => response.json())
+        .then(data => {
+            let totalAmount = 0;
+            let previousTotal = 0; // Fetch previous month data if needed
+
+            data.forEach(transaction => {
+                if (transaction.status === "Completed") {
+                    totalAmount += parseFloat(transaction.amount);
+                }
+            });
+
+            let increasePercentage = previousTotal > 0 ? ((totalAmount - previousTotal) / previousTotal) * 100 : 0;
+
+            document.getElementById('totalTransactions').textContent = `$${totalAmount.toFixed(2)}`;
+            document.getElementById('transactionIncrease').textContent = `+${increasePercentage.toFixed(2)}% from last month`;
+        })
+        .catch(error => console.error('Error:', error));
+
+        document.getElementById('dashboardCurrentYear').textContent = new Date().getFullYear();
+
+        let currentTotal = 0;
+    let fraudAttempts = 0;
+    let moneySaved = 0;
+    let uniqueUsers = new Set();
+    let normalTransactions = [];
+    let suspiciousTransactions = [];
+    let transactionDates = [];
+
+    fetch('http://127.0.0.1:5000/fetch_transactions')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Fetched Transactions Data:", data);
+        
+        data.forEach(transaction => {
+            uniqueUsers.add(transaction.username);
+
+            if (transaction.date) {
+                transactionDates.push(transaction.date);
+            }
+
+            let amount = parseFloat(transaction.amount) || 0;
+
+            if (transaction.status === "Completed") {
+                currentTotal += amount;
+                normalTransactions.push(amount);
+                suspiciousTransactions.push(null); // Ensure arrays stay in sync
+            } else if (transaction.status === "Incomplete") {
+                fraudAttempts++;
+                moneySaved += amount;
+                suspiciousTransactions.push(amount);
+                normalTransactions.push(null); // Ensure arrays stay in sync
+            }
+        });
+
+        console.log("Dates:", transactionDates);
+        console.log("Normal Transactions:", normalTransactions);
+        console.log("Suspicious Transactions:", suspiciousTransactions);
+        console.log("Normal Transactions:", normalTransactions);
+console.log("Suspicious Transactions:", suspiciousTransactions);
+
+if (window.transactionChart) {
+    window.transactionChart.destroy();
+}
+        document.getElementById('totalTransactions').textContent = `$${currentTotal.toFixed(2)}`;
+        document.getElementById('fraudAttempts').textContent = fraudAttempts;
+        document.getElementById('moneySaved').textContent = `$${moneySaved.toFixed(2)}`;
+        document.getElementById('activeUsers').textContent = uniqueUsers.size;
+
+        return fetch('http://127.0.0.1:5000/get_previous_month_total');
+    })
+    .then(response => response.json())
+    .then(prevData => {
+        console.log("Previous Month Data:", prevData);
+
+        let previousTotal = prevData.previous_total || 0;
+        let increasePercentage = previousTotal > 0 ? ((currentTotal - previousTotal) / previousTotal) * 100 : 0;
+
+        document.getElementById('transactionIncrease').textContent = `+${increasePercentage.toFixed(2)}% from last month`;
+
+        // 🛠 Fix: If arrays are empty, add default data
+        if (transactionDates.length === 0) {
+            transactionDates = ["No Data"];
+            normalTransactions = [0];
+            suspiciousTransactions = [0];
+        }
+
+        // 🛠 Fix: Destroy previous chart instance if exists
+        if (window.transactionChart) {
+            window.transactionChart.destroy();
+        }
+
+        // 🛠 Initialize the graph
+        const ctx = document.getElementById('transactionOverviewChart').getContext('2d');
+        window.transactionChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: transactionDates,
+                datasets: [
+                    {
+                        label: 'Normal Transactions',
+                        data: normalTransactions,
+                        borderColor: 'green',
+                        backgroundColor: 'rgba(0, 255, 0, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.3, // Smooth curve
+                        fill: false
+                    },
+                    {
+                        label: 'Suspicious Transactions',
+                        data: suspiciousTransactions,
+                        borderColor: 'red',
+                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { title: { display: true, text: 'Date' } },
+                    y: { title: { display: true, text: 'Amount ($)' } }
+                }
+            }
+        });
+    })
+    .catch(error => console.error('Error:', error));
+        
+    </script>
+</body>
+</html>
