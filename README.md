@@ -53,4 +53,4 @@ This project is licensed under the MIT License.
 **Contact**
 ---------
 
-For any questions or concerns, please contact us at [dp1128@srmist.edu.in](mailto:dp1128@srmist.edu.in).
+For any questions or concerns, please contact us at [dp1128@srmist.edu.in](mailto:dp1128@srmist.edu.in)[nik2006123@proton.me](mailto:nik2006123@proton.me)
